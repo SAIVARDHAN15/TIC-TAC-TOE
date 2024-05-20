@@ -1,0 +1,167 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        TicTacToe();
+    }
+    public static void TicTacToe(){
+        char[][] board = new char[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                board[i][j] = ' ';
+            }
+        }
+        while(!gameOver(board)){
+            player1Turn(board);
+            display(board);
+            if(!gameOver(board)){
+                player2Turn(board);
+                display(board);
+            }
+        }
+    }
+    private static void player1Turn(char[][] board){
+        System.out.println("Player 1 : Enter the coordinates for 'X' : ");
+        Scanner sc = new Scanner(System.in);
+        int r = sc.nextInt();
+        int c = sc.nextInt();
+        if(isValid(board, r, c)){
+            board[r][c] = 'X';
+            if(gameOver(board)){
+                System.out.println("Player 1 wins!!!");
+                return;
+            }
+            return;
+        }
+        else{
+            System.out.println("The given coordinates are invalid!");
+            player1Turn(board);
+        }
+    }
+    private static void player2Turn(char[][] board){
+        System.out.println("Player 2 : Enter the coordinates for 'O': ");
+        Scanner sc = new Scanner(System.in);
+        int r = sc.nextInt();
+        int c = sc.nextInt();
+        if(isValid(board, r, c)){
+            board[r][c] = 'O';
+            if(gameOver(board)){
+                System.out.println("Player 2 wins!!!");
+                return;
+            }
+            return;
+        }
+        else{
+            System.out.println("The given coordinates are invalid!");
+            player2Turn(board);
+        }
+    }
+    private static boolean gameOver(char[][] board){
+        //check if any diagonal completed the strike
+        if(board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X' || board[0][0] == 'O' && board[1][1] == 'O' && board[2][2] == 'O') return true;
+        if(board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X' || board[0][2] == 'O' && board[1][1] == 'O' && board[2][0] == 'O') return true;
+        //check if any row completed the strike
+        for (int i = 0; i < 3; i++) {
+            if(board[i][0] == 'X' && board[i][1] == 'X' && board[i][2] == 'X' || board[i][0] == 'O' && board[i][1] == 'O' && board[i][2] == 'O') return true;
+        }
+        // check if any col completed the strike
+        for (int i = 0; i < 3; i++) {
+            if(board[0][i] == 'X' && board[1][i] == 'X' && board[2][i] == 'X' || board[0][i] == 'O' && board[1][i] == 'O' && board[2][i] == 'O') return true;
+        }
+        return false;
+    }
+    private static boolean isValid(char[][] board, int r, int c){
+        return r <= 2 && c <= 2 && board[r][c] == ' ' ;
+    }
+    private static void display(char[][] board){
+        for (int i = 0; i < 3; i++) {
+            System.out.println();
+            for (int j = 0; j < 3; j++) {
+                System.out.print("| " + board[i][j]+ " |");
+            }
+        }
+        System.out.println();
+    }
+}import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        TicTacToe();
+    }
+    public static void TicTacToe(){
+        char[][] board = new char[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                board[i][j] = ' ';
+            }
+        }
+        while(!gameOver(board)){
+            player1Turn(board);
+            display(board);
+            if(!gameOver(board)){
+                player2Turn(board);
+                display(board);
+            }
+        }
+    }
+    private static void player1Turn(char[][] board){
+        System.out.println("Player 1 : Enter the coordinates for 'X' : ");
+        Scanner sc = new Scanner(System.in);
+        int r = sc.nextInt();
+        int c = sc.nextInt();
+        if(isValid(board, r, c)){
+            board[r][c] = 'X';
+            if(gameOver(board)){
+                System.out.println("Player 1 wins!!!");
+                return;
+            }
+            return;
+        }
+        else{
+            System.out.println("The given coordinates are invalid!");
+            player1Turn(board);
+        }
+    }
+    private static void player2Turn(char[][] board){
+        System.out.println("Player 2 : Enter the coordinates for 'O': ");
+        Scanner sc = new Scanner(System.in);
+        int r = sc.nextInt();
+        int c = sc.nextInt();
+        if(isValid(board, r, c)){
+            board[r][c] = 'O';
+            if(gameOver(board)){
+                System.out.println("Player 2 wins!!!");
+                return;
+            }
+            return;
+        }
+        else{
+            System.out.println("The given coordinates are invalid!");
+            player2Turn(board);
+        }
+    }
+    private static boolean gameOver(char[][] board){
+        //check if any diagonal completed the strike
+        if(board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X' || board[0][0] == 'O' && board[1][1] == 'O' && board[2][2] == 'O') return true;
+        if(board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X' || board[0][2] == 'O' && board[1][1] == 'O' && board[2][0] == 'O') return true;
+        //check if any row completed the strike
+        for (int i = 0; i < 3; i++) {
+            if(board[i][0] == 'X' && board[i][1] == 'X' && board[i][2] == 'X' || board[i][0] == 'O' && board[i][1] == 'O' && board[i][2] == 'O') return true;
+        }
+        // check if any col completed the strike
+        for (int i = 0; i < 3; i++) {
+            if(board[0][i] == 'X' && board[1][i] == 'X' && board[2][i] == 'X' || board[0][i] == 'O' && board[1][i] == 'O' && board[2][i] == 'O') return true;
+        }
+        return false;
+    }
+    private static boolean isValid(char[][] board, int r, int c){
+        return r <= 2 && c <= 2 && board[r][c] == ' ' ;
+    }
+    private static void display(char[][] board){
+        for (int i = 0; i < 3; i++) {
+            System.out.println();
+            for (int j = 0; j < 3; j++) {
+                System.out.print("| " + board[i][j]+ " |");
+            }
+        }
+        System.out.println();
+    }
+}
