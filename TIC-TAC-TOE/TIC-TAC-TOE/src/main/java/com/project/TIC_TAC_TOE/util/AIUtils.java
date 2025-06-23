@@ -1,4 +1,3 @@
-// AIUtils.java
 package com.project.TIC_TAC_TOE.util;
 
 import java.util.ArrayList;
